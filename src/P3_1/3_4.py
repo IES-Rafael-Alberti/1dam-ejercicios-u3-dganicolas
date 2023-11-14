@@ -14,16 +14,19 @@ def lista():
     for i in range(0,8):
         numeros = int(input(f"dame el numero {i+1}: "))
         if (numeros is not lista) and numeros>0 and numeros<50:
+            while numeros in lista:
+                print("error el numero ha sido introducido previamente")
+                numeros = int(input(f"dame el numero {i+1}: "))
             lista.append(numeros)
         else:
-            print("error el numero no ha sido introduco correctamente")
+            print("error el numero no ha sido introducido correctamente")
     return lista
 
 def main():
-    lista_str=""
     listaa=lista()
+    listaa.sort
     os.system("cls")
-    print(f"Yo estudio")
+    print(f"tu numero son")
     print(*listaa)
 if __name__ =="__main__":
     main()
