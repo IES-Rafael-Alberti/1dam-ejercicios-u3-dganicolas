@@ -24,9 +24,11 @@ def lista():
 
 def main():
     listaa=lista()
-    listaa.sort
+    listaa.sort()
     os.system("cls")
     print(f"tu numero son")
-    print(*listaa)
+    print(listaa[0:5])
+    print(f"tu reintegro es")
+    print(listaa[6])
 if __name__ =="__main__":
     main()
