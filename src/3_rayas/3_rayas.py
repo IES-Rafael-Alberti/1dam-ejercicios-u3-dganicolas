@@ -69,7 +69,7 @@ def colocar_ficha(tablero:tuple, jugador:int):
         if pos_correcta:
             tablero[pos_ficha['fila']][pos_ficha['columna']] = jugador
         else:
-            tablero[pos_ficha['fila']] = [pos_ficha['columna']] = None
+            pos_ficha['fila'] = pos_ficha['columna'] = None
             print("***ERROR*** movimiento  invalido")
             pulse_tecla_para_continuar()
             mostrar_tablero(tablero)
@@ -83,6 +83,7 @@ def cambiar_turnos(turno:int)-> int:
 def jugar(tablero:tuple):
     turno = 0
     ronda = 0
+    ganador=""
     hay_ganador= False
     while not hay_ganador:
         turno=cambiar_turnos(turno)
@@ -97,17 +98,26 @@ def jugar(tablero:tuple):
         mostrar_tablero(tablero) # me falta un try que no hace :")
 
         if ronda >= 3:
-            ganador, hay_ganador = verificar_ganador(tablero)
+            ganador, hay_ganador= verificar_ganador(tablero,ganador, hay_ganador)
 
         if hay_ganador:
-            print(f"\n¿el jugador {ganador} ha ganado")
+            print(f"\nel jugador {ganador} ha ganado")
 
         if ronda == 9:
             hay_ganador==True
             print('\nempate\n')
 
-def verificar_ganador(tablero) -> tuple:
-    print
+def verificar_ganador(tablero,ganador, hay_ganador) -> tuple:
+    if (tablero[2][0]==1 and tablero[2][1]==1 and tablero[2][2]==1 ) or (tablero[1][0]==1 and tablero[1][1]==1 and tablero[1][2]==1 ) or (tablero[0][0]==1 and tablero[0][1]==1 and tablero[0][2]==1 ) or (tablero[0][0]==1 and tablero[1][0]==1 and tablero[2][0]==1 ) or (tablero[0][1]==1 and tablero[1][1]==1 and tablero[2][1]==1 ) or (tablero[0][2]==1 and tablero[1][2]==1 and tablero[2][2]==1 ) or (tablero[0][0]==1 and tablero[1][1]==1 and tablero[2][2]==1 ) or (tablero[0][2]==1 and tablero[1][1]==1 and tablero[2][0]==1 ):
+        ganador ="jugador 1"
+        hay_ganador=True
+        return ganador,hay_ganador
+    if (tablero[2][0]==2 and tablero[2][1]==2 and tablero[2][2]==2 ) or (tablero[1][0]==2 and tablero[1][1]==2 and tablero[1][2]==2 ) or (tablero[0][0]==2 and tablero[0][1]==2 and tablero[0][2]==2 ) or (tablero[0][0]==2 and tablero[1][0]==2 and tablero[2][0]==2 ) or (tablero[0][1]==2 and tablero[1][1]==2 and tablero[2][1]==2 ) or (tablero[0][2]==1 and tablero[1][2]==1 and tablero[2][2]==1 ) or (tablero[0][0]==1 and tablero[1][1]==1 and tablero[2][2]==1 ) or (tablero[0][2]==1 and tablero[1][1]==1 and tablero[2][0]==1 ):
+        ganador ="jugador 2"
+        hay_ganador=True
+        return ganador,hay_ganador
+    else:
+        return ganador,hay_ganador
 
 def main():
     tablero = crear_tablero()

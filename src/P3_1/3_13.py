@@ -28,8 +28,9 @@ def calculo_varianza(lista,media):
     suma=0
     resultado= 0
     for i in range (len(lista)):
+        Xi=lista[i]
         suma+= int(lista[i])
-        Fi+= X**2 * int(lista[i])
+        Fi+= (Xi-X)**2 * int(lista[i])
         X+=1
     resultado = Fi / suma
     resultado = resultado**0.5
