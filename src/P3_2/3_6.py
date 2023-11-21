@@ -7,7 +7,7 @@ def preguntar_al_usuario(i):
 def main():
     d={}
     lista = ("nombre", "edad", "sexo", "teléfono", "correo electrónico")
-    for i in range(len(lista)):
+    for i in range(1,len(lista)):
         clase = lista[i]
         objeto=preguntar_al_usuario(clase)
         d[clase]=objeto
